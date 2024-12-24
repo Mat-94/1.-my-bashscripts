@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Disk Usage Monitoring Script
+
+# Set threshold percentage
+THRESHOLD=80
+
+# Get current disk usage percentage
+DISK_USAGE=$(df -h / | grep '/' | awk '{print $5}' | sed 's/%//')
+
+# Check if disk usage exceeds the threshold
+if [ "$DISK_USAGE" -gt "$THRESHOLD" ]; then
+    MESSAGE="WARNING: Disk usage is at ${DISK_USAGE}% on $(hostname)!"
+        echo "$MESSAGE"
+	    
+# Send email alert (Optional, requires mail utils)
+# echo "$MESSAGE" | mail -s "Disk Usage Alert on $(hostname)" mathiasmahami@gmail.com
+		    else
+        echo "Disk usage is normal: ${DISK_USAGE}%"
+		fi
+
