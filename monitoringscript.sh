@@ -25,4 +25,5 @@
 	 for SERVICE in "${SERVICES[@]}"; do
 		     check_service_status $SERVICE
 	     done
+	     #mathias
 
